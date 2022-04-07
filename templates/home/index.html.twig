@@ -3,6 +3,11 @@
 {% block title %}Le café{% endblock %}
 
 {% block body %}
-<div>
+<div class="container d-flex flex-column align-items-center">
+    <span>
+        <video class="rounded-circle" muted autoplay preload="auto" loop>
+            <source src="{{ asset('build/images/Coffee.mp4') }}"/>
+        </video>
+    </span>
 </div>
 {% endblock %}
