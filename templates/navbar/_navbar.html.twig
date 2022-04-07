@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('app_home') }}">Le café</a>
+        <a class="navbar-brand ms-3" href="{{ path('app_home') }}">Le café</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,18 +21,22 @@
             </ul>
             <ul class="navbar-nav text-center">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Connexion
+                    <a class="nav-link dropdown-toggle me-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if is_granted("ROLE_USER") %}
+                            Mon compte
+                        {% else %}
+                            Connexion
+                        {% endif %}
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu dropdown-menu-dark me-5" aria-labelledby="navbarDropdown">
                         {% if is_granted("ROLE_USER") %}
                             <li><a class="dropdown-item" href="#">Mon compte</a></li>
                             <li><a class="dropdown-item" href="#">Mes commandes</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a></li>
                         {% else %}
                             <li><a class="dropdown-item" href="#">Inscription</a></li>
-                            <li><a class="dropdown-item" href="#">Connexion</a></li>
+                            <li><a class="dropdown-item" href={{ path('app_login') }}>Connexion</a></li>
                         {% endif %}
                     </ul>
                 </li>
