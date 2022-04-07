@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_home') }}">Le café</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 w-50 d-flex flex-column align-items-center flex-lg-row justify-content-lg-around">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">A propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Produits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav text-center">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Connexion
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                        {% if is_granted("ROLE_USER") %}
+                            <li><a class="dropdown-item" href="#">Mon compte</a></li>
+                            <li><a class="dropdown-item" href="#">Mes commandes</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+                        {% else %}
+                            <li><a class="dropdown-item" href="#">Inscription</a></li>
+                            <li><a class="dropdown-item" href="#">Connexion</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
