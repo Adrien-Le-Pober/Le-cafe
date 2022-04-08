@@ -21,7 +21,7 @@
                 <h5 class="card-title text-center">{{ product.name }}</h5>
                 <img src="{{ product.picture }}" class="card-img-top" alt="coffee picture">
                 <div class="card-body">
-                    <a href="#" class="btn btn-primary w-100 my-3">Ajouter au panier</a>
+                    <a href="{{ path('app_cart_add', {id: product.id})}}" class="btn btn-primary w-100 my-3">Ajouter au panier</a>
                     <div class="d-flex justify-content-between">
                         <span>{{ product.stock ? 'En stock' : 'Rupture' }}</span>
                         <span>{{ product.price|format_currency('EUR') }}</span>
