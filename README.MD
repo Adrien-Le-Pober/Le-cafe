@@ -1,8 +1,10 @@
 composer install  
 yarn install
 
-définir la base de données dans .env  
-symfony console d:d:c 
+définir la base de données dans .env
+
+symfony console d:d:c
+
 symfony console doctrine:schema:update
 
 symfony console doctrine:fixtures:load
