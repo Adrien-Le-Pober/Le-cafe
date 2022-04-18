@@ -4,13 +4,13 @@
 
 {% block body %}
 <div class="container d-flex flex-column align-items-center">
-    <span class="my-5">
+    <span class="d-flex align-items-center min-vh-100">
         <video class="rounded-circle" muted autoplay preload="auto" loop>
             <source src="{{ asset('build/images/sm-Coffee.mp4') }}" type="video/mp4" media="all and (max-width:768px)">
             <source src="{{ asset('build/images/Coffee.mp4') }}" type="video/mp4"/>
         </video>
     </span>
-    <div class="container my-5">
+    <div class="container my-5 reveal">
         <div class="row my-5" id="carousel">
             <div class="col-12">
                 <h3>Costa Rica</h3>
@@ -78,5 +78,37 @@
             }
         ]
     });
+</script>
+<script type="text/javascript">
+    const ratio = 0.5
+
+    var options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: ratio
+    }
+
+    const handleIntersect = function(entries, observer) {
+        console.log(entries);
+        entries.forEach(entry => {
+            //quand l'élément est visible
+            if (entry.intersectionRatio > ratio) {
+                entry.target.classList.add('reveal-visible');
+                //désactiver l'observer pour ne pas répéter l'animation plusieurs fois
+                observer.unobserve(entry.target)
+            }
+            /*si on souhaite relancer l'animation à chaque passage, on peut utiliser
+            un else ici exécuter du code lorsque l'élément devient invisible*/
+        })
+    }
+
+    var observer = new IntersectionObserver(handleIntersect, options);
+
+    observer.observe(document.querySelector('.reveal'));
+
+    //Si on souhaite utiliser la classe sur plusieurs élément
+    /* document.querySelectorAll('.reveal').forEach(function (r) {
+        observer.observe(r);
+    )}  */
 </script>
 {% endblock %}
