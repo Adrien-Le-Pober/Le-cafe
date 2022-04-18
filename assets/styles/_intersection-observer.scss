@@ -1,0 +1,12 @@
+/*Masquer l’élément*/
+.reveal {
+	opacity: 0;
+	transform: translateY(-30px);
+}
+
+/*Afficher l'élément*/
+.reveal-visible {
+	opacity: 1;
+	transform: translateY(0);
+	transition: 1s cubic-bezier(.5, 0, 0, 1);
+}
